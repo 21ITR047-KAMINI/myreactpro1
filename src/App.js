@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+//import logo from './logo.svg';
+import './App.css';  
+import Heading from './components/Heading'
+import Footer from './components/Footer' ;
+import { useState } from 'react';
 
 function App() {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  const backgroundColor = theme === 'light' ? '#fff' : '#333';
+  const textColor = theme === 'light' ? '#333' : '#fff';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <Heading />
+      <div className="spacer">
+        <div className="button-container">
+          <button
+            className="toggle-button"
+            onClick={toggleTheme}
+            style={{ backgroundColor, color: textColor }}
+          >
+            PROFILE
+          </button>
+        </div>
+        <Footer/>
+      </div>
+      
+   </>
+   
   );
 }
 
